@@ -4,7 +4,7 @@
     <title>Boxfuse Sample App: success!</title>
 </head>
 <body style="text-align: center">
-<h1>Pray for Lard Krishna &&&</h1>
+<h1>Pray for Lard Krishna</h1>
 <img src="lard.jpeg" alt="Lard Krishna" width="500" height="600">
 
 <h2>You have successfully launched your Instance!</h2>
