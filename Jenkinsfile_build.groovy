@@ -6,6 +6,8 @@ pipeline{
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
 
+        string(name: 'source_Branch', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
     }
     
     
@@ -18,7 +20,7 @@ pipeline{
     stages {
         stage("clone code") {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'git-token' , url: 'https://github.com/KuruvaSomaSekhar/Sep23.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/${params.source_Branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'git-token' , url: 'https://github.com/KuruvaSomaSekhar/Sep23.git']]])
                 sh "ls -lart ./*"
             }
         }
