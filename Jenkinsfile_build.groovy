@@ -20,7 +20,7 @@ pipeline{
     stages {
         stage("clone code") {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/${params.source_Branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'git-token' , url: 'https://github.com/KuruvaSomaSekhar/Sep23.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: ${params.source_Branch}]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'git-token' , url: 'https://github.com/KuruvaSomaSekhar/Sep23.git']]])
                 sh "ls -lart ./*"
             }
         }
