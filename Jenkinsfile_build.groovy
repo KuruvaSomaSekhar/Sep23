@@ -36,9 +36,10 @@ pipeline{
         stage("Print params") {
             steps{
                 sh """
-                echo $PERSON 
-                echo $TOGGLE
-                echo $CHOICE
+                echo "Hello ${params.PERSON}"
+                echo "Toggle: ${params.TOGGLE}"
+                echo "Choice: ${params.CHOICE}"
+
               """
             }
         }
