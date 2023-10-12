@@ -39,6 +39,9 @@ pipeline{
                 echo $PERSON 
                 echo $TOGGLE
                 echo $CHOICE
-        }       """
+              """
+            }
+        }
     }
+         
 }
