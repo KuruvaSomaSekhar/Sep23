@@ -1,5 +1,20 @@
 pipeline{
     agent any
+    
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+    }
+    
+    
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timeout(time: 1, unit: 'HOURS')
+    }
+    
+    
     stages {
         stage("clone code") {
             steps {
@@ -16,6 +31,14 @@ pipeline{
             steps{
                 sh "aws s3 cp target/devops-*.war s3://sep23artifacts/$JOB_NAME/"
             }
-        }     
+        }
+
+        stage("Print params") {
+            steps{
+                sh """
+                echo $PERSON 
+                echo $TOGGLE
+                echo $CHOICE
+        }       """
     }
 }
