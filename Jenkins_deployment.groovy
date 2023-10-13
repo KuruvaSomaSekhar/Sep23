@@ -1,16 +1,16 @@
 pipeline {
     agent any
      parameters {
-        string(name: 'serverIPs', defaultValue: '', description: 'provide server ips?')
-        string(name: 'buildNumber', defaultValue: '', description: 'provide server ips?')
-        string(name: 'branchName', defaultValue: '', description: 'provide server ips?')
+        string(name: 'serverIPs', defaultValue: '172.31.30.245,172.31.22.240,172.31.31.114', description: 'provide server ips?')
+        string(name: 'buildNumber', defaultValue: '32', description: 'provide server ips?')
+        string(name: 'branchName', defaultValue: 'master', description: 'provide server ips?')
 
      }
     
     stages{
         stage("list"){
             steps{
-                sh "aws s3 cp s3://sep23artifacts/MyPipelineJobs/buildPipeline/${params.branchName}/${params.buildNumber}/ ."
+                sh "aws s3 sync s3://sep23artifacts/MyPipelineJobs/buildPipeline/${params.branchName}/${params.buildNumber}/ ."
                 sh "ls -lat"
             }
         }
