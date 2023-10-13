@@ -13,7 +13,7 @@ pipeline {
         }
         stage("scp"){
             steps {
-                sh """
+                sh '''
                         IFS=, read -ra values <<< "$serverIPs"
                             for ip in "${values[@]}"
                             do
@@ -24,7 +24,7 @@ pipeline {
                             ssh -o StrictHostKeyChecking=no -i /tmp/sep2023.pem ec2-user@$ip "bash /tmp/tomcatinstall.sh"
                             done
                     
-                    """
+                    '''
             }
         }
     }
