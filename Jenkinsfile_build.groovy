@@ -31,7 +31,7 @@ pipeline{
         }
         stage("upload sep23artifacts to s3"){
             steps{
-                sh "aws s3 cp target/devops-*.war s3://sep23artifacts/$JOB_NAME/"
+                sh "aws s3 cp target/devops-*.war s3://sep23artifacts/$JOB_NAME/${params.source_Branch}/${BUILD_NUMBER}"
             }
         }
 
