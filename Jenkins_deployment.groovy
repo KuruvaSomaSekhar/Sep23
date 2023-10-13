@@ -10,7 +10,7 @@ pipeline {
     stages{
         stage("list"){
             steps{
-                sh "aws s3 cp s3://sep23artifacts/MyPipelineJobs/buildPipeline/${params.branchName}/${params.buildNumber}/* ."
+                sh "aws s3 cp s3://sep23artifacts/MyPipelineJobs/buildPipeline/${params.branchName}/${params.buildNumber}/ ."
                 sh "ls -lat"
             }
         }
